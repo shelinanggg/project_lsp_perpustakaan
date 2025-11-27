@@ -1,0 +1,1171 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-blue: #2563eb;
+    --dark-blue: #1e40af;
+    --light-blue: #3b82f6;
+    --gray-light: #f3f4f6;
+    --gray-medium: #9ca3af;
+    --gray-dark: #4b5563;
+    --white: #ffffff;
+    --black: #111827;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--black);
+    background: linear-gradient(135deg, var(--gray-light) 0%, var(--white) 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* General Link Styles */
+a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+a:hover {
+    color: var(--dark-blue);
+}
+
+/* Link with underline effect */
+main > p a,
+.content a:not(.btn):not(.button):not(.action-link) {
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+    font-weight: 500;
+}
+
+main > p a:hover,
+.content a:not(.btn):not(.button):not(.action-link):hover {
+    border-bottom: 2px solid var(--primary-blue);
+}
+
+/* Standalone action links (like "Tambah Buku Baru") */
+main > a,
+main a[href*="create"],
+main a[href*="tambah"],
+.page-header a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 1rem 0;
+    transition: all 0.3s ease;
+    border: 2px solid;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+main > a[href*="create"],
+main > a[href*="tambah"],
+.page-header a[href*="create"],
+.page-header a[href*="tambah"] {
+    background: #10b981;
+    color: var(--white);
+    border-color: #10b981;
+}
+
+main > a[href*="create"]:hover,
+main > a[href*="tambah"]:hover,
+.page-header a[href*="create"]:hover,
+.page-header a[href*="tambah"]:hover {
+    background: #059669;
+    border-color: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Action Links (Edit, Delete, View, etc) */
+a.action-link,
+.action-links a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0.25rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-align: center;
+    min-width: 80px;
+}
+
+/* Table action links - more specific */
+table td a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin: 0.25rem;
+    transition: all 0.3s ease;
+    border: 2px solid;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Edit/View Link */
+a[href*="edit"],
+a.edit,
+a[href*="show"],
+a.view,
+table td a[href*="edit"],
+table td a[href*="show"] {
+    background: transparent;
+    color: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+a[href*="edit"]:hover,
+a.edit:hover,
+a[href*="show"]:hover,
+a.view:hover,
+table td a[href*="edit"]:hover,
+table td a[href*="show"]:hover {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+}
+
+/* Delete Link */
+a[href*="delete"],
+a[href*="hapus"],
+a.delete,
+table td a[href*="delete"],
+table td a[href*="hapus"],
+form[action*="delete"] button,
+button[onclick*="delete"] {
+    background: #ef4444;
+    color: var(--white);
+    border-color: #ef4444;
+    border: 2px solid #ef4444;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+a[href*="delete"]:hover,
+a[href*="hapus"]:hover,
+a.delete:hover,
+table td a[href*="delete"]:hover,
+table td a[href*="hapus"]:hover,
+form[action*="delete"] button:hover,
+button[onclick*="delete"]:hover {
+    background: #dc2626;
+    border-color: #dc2626;
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+}
+
+/* Create/Add Link */
+a[href*="create"]:not(main > a),
+a.create,
+a[href*="tambah"]:not(main > a),
+a.add,
+table td a[href*="create"],
+table td a[href*="tambah"] {
+    background: transparent;
+    color: #10b981;
+    border-color: #10b981;
+}
+
+a[href*="create"]:not(main > a):hover,
+a.create:hover,
+a[href*="tambah"]:not(main > a):hover,
+a.add:hover,
+table td a[href*="create"]:hover,
+table td a[href*="tambah"]:hover {
+    background: #10b981;
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+}
+
+/* Detail/Info Link */
+a[href*="detail"],
+a.detail,
+table td a[href*="detail"] {
+    background: transparent;
+    color: var(--light-blue);
+    border-color: var(--light-blue);
+}
+
+a[href*="detail"]:hover,
+a.detail:hover,
+table td a[href*="detail"]:hover {
+    background: var(--light-blue);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+/* Back/Cancel Link */
+a[href*="back"],
+a.back,
+a[href*="cancel"],
+a.cancel,
+a[href*="kembali"],
+table td a[href*="back"],
+table td a[href*="kembali"] {
+    background: transparent;
+    color: var(--gray-dark);
+    border-color: var(--gray-dark);
+}
+
+a[href*="back"]:hover,
+a.back:hover,
+a[href*="cancel"]:hover,
+a.cancel:hover,
+a[href*="kembali"]:hover,
+table td a[href*="back"]:hover,
+table td a[href*="kembali"]:hover {
+    background: var(--gray-dark);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(75, 85, 99, 0.3);
+}
+
+/* Action buttons container */
+.action-buttons,
+.actions,
+td .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+/* Prevent overlap in table cells */
+table td {
+    white-space: nowrap;
+    background: transparent !important;
+}
+
+table td a {
+    vertical-align: middle;
+}
+
+/* Remove white background from table cells with buttons */
+table tbody tr td:last-child {
+    background: transparent !important;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+    color: var(--white);
+    padding: 2rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+header p {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Navigation Styles */
+nav {
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    width: 100%;
+}
+
+main h2 {
+    color: var(--dark-blue);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+main h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--light-blue));
+    border-radius: 2px;
+}
+
+main h3 {
+    color: var(--gray-dark);
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem 0;
+}
+
+main p {
+    color: var(--gray-dark);
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Alert Messages */
+.alert {
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    animation: slideIn 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.alert-success {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.alert-error {
+    background: #fee2e2;
+    border: 2px solid #ef4444;
+    color: #991b1b;
+}
+
+.alert ul {
+    list-style-position: inside;
+    margin-top: 0.5rem;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* List Styles */
+ul {
+    list-style: none;
+    margin: 2rem 0;
+}
+
+ul li {
+    background: var(--white);
+    margin: 1rem 0;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--primary-blue);
+}
+
+ul li:hover {
+    transform: translateX(10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+ul li a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+ul li a:hover {
+    color: var(--dark-blue);
+}
+
+ul li a::before {
+    content: '→';
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+ul li:hover a::before {
+    transform: translateX(5px);
+}
+
+/* Register Link */
+main > p:last-child {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+main > p:last-child a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+main > p:last-child a:hover {
+    background: var(--primary-blue);
+    color: var(--white);
+}
+
+/* Footer Styles */
+footer {
+    background: var(--gray-dark);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: auto;
+}
+
+footer hr {
+    border: none;
+    border-top: 2px solid var(--gray-medium);
+    margin-bottom: 1rem;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer p {
+    font-size: 0.95rem;
+    color: var(--gray-medium);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    main {
+        padding: 2rem 1rem;
+    }
+
+    main h2 {
+        font-size: 1.5rem;
+    }
+
+    nav a {
+        display: block;
+        margin: 0.5rem 0;
+    }
+
+    ul li {
+        padding: 1rem;
+    }
+
+    ul li:hover {
+        transform: translateX(5px);
+    }
+}
+
+/* Button Styles */
+button,
+.btn,
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+a.button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: inherit;
+}
+
+button:hover,
+.btn:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+a.button:hover {
+    background: var(--dark-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+button:active,
+.btn:active,
+input[type="submit"]:active,
+input[type="button"]:active,
+input[type="reset"]:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Variants */
+.btn-secondary,
+button.secondary {
+    background: var(--gray-dark);
+}
+
+.btn-secondary:hover,
+button.secondary:hover {
+    background: var(--black);
+}
+
+.btn-danger,
+button.danger {
+    background: #ef4444;
+}
+
+.btn-danger:hover,
+button.danger:hover {
+    background: #dc2626;
+}
+
+.btn-success,
+button.success {
+    background: #10b981;
+}
+
+.btn-success:hover,
+button.success:hover {
+    background: #059669;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+}
+
+/* Form Styles */
+form {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+}
+
+label {
+    display: block;
+    color: var(--gray-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="tel"],
+input[type="url"],
+input[type="search"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: var(--white);
+    color: var(--black);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Checkbox Styles */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-blue);
+    border-radius: 4px;
+    background: var(--white);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+input[type="checkbox"]:hover {
+    border-color: var(--dark-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+input[type="checkbox"]:checked {
+    background: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    color: var(--white);
+    font-size: 14px;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input[type="checkbox"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* Radio Button Styles */
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-blue);
+    border-radius: 50%;
+    background: var(--white);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+input[type="radio"]:hover {
+    border-color: var(--dark-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+input[type="radio"]:checked {
+    border-color: var(--primary-blue);
+}
+
+input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--primary-blue);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input[type="radio"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* File Input Styles */
+input[type="file"] {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 2px dashed var(--primary-blue);
+    border-radius: 8px;
+    background: rgba(37, 99, 235, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0;
+}
+
+input[type="file"]:hover {
+    border-color: var(--dark-blue);
+    background: rgba(37, 99, 235, 0.1);
+}
+
+input[type="file"]:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Custom file input wrapper */
+.file-input-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.file-input-wrapper input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.file-input-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 2px dashed var(--primary-blue);
+    border-radius: 8px;
+    background: rgba(37, 99, 235, 0.05);
+    color: var(--primary-blue);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.file-input-label:hover {
+    border-color: var(--dark-blue);
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--dark-blue);
+}
+
+.file-input-label::before {
+    content: '📁';
+    font-size: 1.5rem;
+}
+
+.file-name {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--gray-dark);
+    font-size: 0.875rem;
+    font-style: italic;
+}
+
+/* Alternative: Custom styled file input */
+input[type="file"]::file-selector-button {
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 1rem;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background: var(--dark-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+input[type="file"] {
+    padding: 0.75rem;
+    font-size: 1rem;
+    color: var(--gray-dark);
+}
+
+/* Checkbox/Radio Label Styles */
+.form-check,
+.checkbox-wrapper,
+.radio-wrapper {
+    display: flex;
+    align-items: center;
+    margin: 0.75rem 0;
+    cursor: pointer;
+}
+
+.form-check label,
+.checkbox-wrapper label,
+.radio-wrapper label {
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+.form-check input,
+.checkbox-wrapper input,
+.radio-wrapper input {
+    margin: 0 0.5rem 0 0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+}
+
+thead {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+    color: var(--white);
+}
+
+thead th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+    transition: background 0.3s ease;
+}
+
+tbody tr:hover {
+    background: var(--gray-light);
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+tbody td {
+    padding: 1rem;
+    color: var(--gray-dark);
+    vertical-align: middle;
+}
+
+/* Table Actions Cell */
+tbody td:last-child {
+    background: transparent !important;
+    padding: 0.5rem;
+}
+
+/* Table action links/buttons - more compact */
+table td a,
+table td button,
+table td input[type="submit"] {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin: 0.15rem;
+    transition: all 0.3s ease;
+    border: 2px solid;
+    white-space: nowrap;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* Make sure buttons in table don't expand */
+table td {
+    white-space: normal;
+}
+
+table td:last-child {
+    white-space: nowrap;
+    text-align: center;
+    min-width: fit-content;
+}
+
+/* Action buttons wrapper in table */
+table td .action-buttons,
+table td .actions {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    gap: 0.3rem;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Table Actions */
+td a,
+td button {
+    margin-right: 0.3rem;
+    margin-bottom: 0.15rem;
+}
+
+td a:last-child,
+td button:last-child {
+    margin-right: 0;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    table td a,
+    table td button {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Card Styles */
+.card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+}
+
+.card-header {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--dark-blue);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--gray-light);
+}
+
+.card-body {
+    color: var(--gray-dark);
+}
+
+/* Badge Styles */
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.badge-primary {
+    background: var(--primary-blue);
+    color: var(--white);
+}
+
+.badge-success {
+    background: #10b981;
+    color: var(--white);
+}
+
+.badge-danger {
+    background: #ef4444;
+    color: var(--white);
+}
+
+.badge-warning {
+    background: #f59e0b;
+    color: var(--white);
+}
+
+.badge-secondary {
+    background: var(--gray-medium);
+    color: var(--white);
+}
+
+/* Pagination Styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+    list-style: none;
+}
+
+.pagination a,
+.pagination span {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--gray-light);
+    border-radius: 8px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.pagination a:hover {
+    background: var(--primary-blue);
+    color: var(--white);
+    border-color: var(--primary-blue);
+}
+
+.pagination .active span {
+    background: var(--primary-blue);
+    color: var(--white);
+    border-color: var(--primary-blue);
+}
+
+.pagination .disabled span {
+    color: var(--gray-medium);
+    cursor: not-allowed;
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid var(--gray-light);
+    border-radius: 50%;
+    border-top-color: var(--primary-blue);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+.p-1 { padding: 0.5rem; }
+.p-2 { padding: 1rem; }
+.p-3 { padding: 1.5rem; }
+.p-4 { padding: 2rem; }
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Grid System */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -0.5rem;
+}
+
+.col {
+    flex: 1;
+    padding: 0.5rem;
+}
+
+.col-2 { flex: 0 0 50%; max-width: 50%; }
+.col-3 { flex: 0 0 33.333%; max-width: 33.333%; }
+.col-4 { flex: 0 0 25%; max-width: 25%; }
+
+@media (max-width: 768px) {
+    .col-2, .col-3, .col-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
